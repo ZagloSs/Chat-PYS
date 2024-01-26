@@ -59,7 +59,7 @@ public class Ventana extends JFrame {
 		// Mostrar mensaje en el área de texto
 		
 		try {
-			mensajes.append("Yo: " + mensaje + "\n");
+			mensajes.append("Yo: " + mensaje.split(";")[1] + "\n");
 			dos.writeUTF(mensaje);
 			prompt.setText("");
 		} catch (IOException e) {
