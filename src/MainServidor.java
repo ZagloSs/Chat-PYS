@@ -4,9 +4,10 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class MainServidor {
+	public static ArrayList<HiloCliente> hilosCliente = new ArrayList<HiloCliente>();
 
 	public static void main(String[] args) {
-		ArrayList<HiloCliente> hilosCliente = new ArrayList<HiloCliente>();
+		
 
 		try (ServerSocket serverSocket = new ServerSocket(6565)) {
 

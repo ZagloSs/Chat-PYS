@@ -21,17 +21,15 @@ public class MainCliente {
 			String mensaje;
 			
 			Ventana ventana = new Ventana();
-			ventana.setVisible(true);
 			ventana.setDos(dos);
+			ventana.setVisible(true);
 
 			while (continuar) {
-				// Leemos del teclado y enviamos el mensaje al server
-				ventana.enviar();
 	
 				// Recibimos la respuesta del server
 				mensaje = dis.readUTF();
 				ventana.Update(mensaje);
-				
+				 
 
 				continuar = !mensaje.equalsIgnoreCase("fin");
 			}

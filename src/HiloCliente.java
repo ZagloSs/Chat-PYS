@@ -3,6 +3,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+import ventana.Ventana;
+
 public class HiloCliente extends Thread {
 	private Socket socket;
 
@@ -12,14 +14,24 @@ public class HiloCliente extends Thread {
 
 	public void run() {
 		String mensaje;
+		Ventana ventana = new Ventana();
 
 		try {
 			DataInputStream dis = new DataInputStream(socket.getInputStream());
-			DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+			DataOutputStream dos = null;
 
 			do {
 				mensaje = dis.readUTF();
-
+				// PC?????;fagsdfagda
+				String[] msg = mensaje.split(";");
+				for (HiloCliente h : MainServidor.hilosCliente) {
+					if(h.getHostName().equals(msg[0])) {
+						Socket socketMsg = h.getSocket();
+						dos = new DataOutputStream(socketMsg.getOutputStream());
+						dos.writeUTF(mensaje);
+					}
+				}
+				 
 
 			} while (!mensaje.equals("fin"));
 
@@ -31,6 +43,18 @@ public class HiloCliente extends Thread {
 			e.printStackTrace();
 		}
 
+	}
+
+	public String getHostName() {
+		return socket.getInetAddress().getHostName();
+	}
+
+	public Socket getSocket() {
+		return socket;
+	}
+
+	public void setSocket(Socket socket) {
+		this.socket = socket;
 	}
 
 }
