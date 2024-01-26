@@ -60,7 +60,7 @@ public class Ventana extends JFrame {
 		
 		try {
 			mensajes.append("Yo: " + mensaje.split(";")[1] + "\n");
-			dos.writeUTF(mensaje);
+			dos.writeUTF(mensaje.split(";")[0] + ": " + mensaje.split(";")[1]);
 			prompt.setText("");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
