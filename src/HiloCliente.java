@@ -29,7 +29,7 @@ public class HiloCliente extends Thread {
 					if(h.getHostName().equals(msg[0])) {
 						Socket socketMsg = h.getSocket();
 						dos = new DataOutputStream(socketMsg.getOutputStream());
-						dos.writeUTF("dsfsdfs");
+						dos.writeUTF(socketName + ": " + msg[1]);
 					}
 				}
 				 
