@@ -60,7 +60,7 @@ public class Ventana extends JFrame {
 		
 		try {
 			mensajes.append("Yo: " + mensaje.split(";")[1] + "\n");
-			dos.writeUTF(mensaje.split(";")[0] + ": " + mensaje.split(";")[1]);
+			dos.writeUTF(mensaje);
 			prompt.setText("");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -72,7 +72,7 @@ public class Ventana extends JFrame {
 	}
 	
 	public void Update(String msg) {
-		mensajes.append(msg);
+		mensajes.append(msg+"\n");
 	}
 	
 	public void setDos(DataOutputStream dos) {

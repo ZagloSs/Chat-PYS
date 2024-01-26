@@ -15,6 +15,7 @@ public class HiloCliente extends Thread {
 	public void run() {
 		String mensaje;
 		Ventana ventana = new Ventana();
+		String socketName = socket.getInetAddress().getHostName();
 
 		try {
 			DataInputStream dis = new DataInputStream(socket.getInputStream());
@@ -28,7 +29,7 @@ public class HiloCliente extends Thread {
 					if(h.getHostName().equals(msg[0])) {
 						Socket socketMsg = h.getSocket();
 						dos = new DataOutputStream(socketMsg.getOutputStream());
-						dos.writeUTF(mensaje);
+						dos.writeUTF("dsfsdfs");
 					}
 				}
 				 
